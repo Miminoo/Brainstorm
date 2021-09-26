@@ -1,0 +1,35 @@
+<%= form_for @task do |f| %>
+  <div class = "form-group">
+    <%= f.label :name, class: "label" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Input task name..." %>
+  </div>
+<div class = "form-group">
+     <%= f.label :all_answers, class: "label" %>
+     <%= f.text_field :all_answers, class: 'form-control', placeholder: "Input answers, but no more than three... for example 1, one, один" %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :all_tags, class: "label" %>
+    <%= f.text_field :all_tags, class: "form-control", placeholder: "Input tag... for example ruby, rails, c++, ..." %>
+  </div>
+
+  <div class = "form-group">
+    <%= f.label "Topic", class: "label" %>
+    <%= f.collection_select(:topic_id, Topic.all, :id, :name, {:multiple => true}, class: "form-control") %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :avatar, multiple: true %>
+    <%= f.file_field :avatar, multiple: true %>
+    <%= f.file_field :avatar, multiple: true %>
+  </div>
+
+  <div class = "form-group">
+    <%= f.label :condition, class: "label" %>
+    <div class="form-condition">
+    <%= f.text_area :condition, style: "width: 100%", rows: 8, maxlength: 5000, placeholder: 'User Markdown for formatting' %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <%= f.submit 'Save', class: 'btn btn-outline-primary pull-xxl-right mt-2 ' %>
+  </div>
+<% end %>
