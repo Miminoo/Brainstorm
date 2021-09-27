@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%
+=begin%>
+ <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -34,10 +36,59 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-<% end %>
+<% end %> 
+<%
+=end%>
+<div class="row mt-2">
+ <div class="col-md-4">
+<h1> Username: <%= @user.name %> </h1>
+</div>
+<div class="col-md-4 ms-auto">
+<div class="d-flex justify-content-end">
+   <h1> <%= @user.email %> </h1>
+</div>
+</div>
+</div>
+<table class="table table-dark mt-2">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Condition</th>
+      <th scope="col">Tags</th>
+      <th scope="col"><%= link_to "New task", new_task_path, class: 'btn btn-light btn-lg d-flex justify-content-center' %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @user.tasks.each do |user_task| %>
+    <tr>
+      <th scope="row"> <%= user_task.name %> </th>
+      <td> <%= user_task.topic.name %></td>
+      <td> <%= markdown(user_task.condition) %></td>
+      <td> 
+      <% user_task.tags.each do |tag| %>
+      <%= tag.name %>
+      <% end %> 
+      </td>
+      <td>
+      <div class="d-flex justify-content-end">
+        <%= link_to "Delete", task_path(user_task.id), data: {confirm: 'You are really?'}, class: 'btn btn-light btn-lg', method: :delete %>
+        <%= link_to "Change", edit_task_path(user_task.id), class: 'btn btn-light btn-lg ms-2' %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h3>Cancel my account</h3>
+<%= link_to "Back", :back, class: "btn btn-dark btn-lg" %> 
+ <%
+=begin%>
+ <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> 
+<%
+=end%>
 
-<%= link_to "Back", :back %>
+
+

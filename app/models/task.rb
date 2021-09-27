@@ -6,7 +6,6 @@ class Task < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   has_many_attached :avatar
-
   def all_tags
     self.tags.map(&:name).join(', ')
   end

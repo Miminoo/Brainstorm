@@ -11,4 +11,42 @@
   <%end%>
   </div>
 </div>
+  <div class="wrapper" style="height:500px;">
+  <canvas id = "myChart">
+  </canvas>
+  </div>
+
+ <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: <%= graf.keys.to_json.html_safe %>,
+            datasets: [{
+                label: '# of Votes',
+                data: <%= graf.values.to_json.html_safe %>,
+                backgroundColor: [
+                    'blue',
+                    'rgb(247, 131, 0)',
+                    'green'
+                ],
+                borderColor: [
+                    'black',
+                    'black',
+                    'black'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 </div>

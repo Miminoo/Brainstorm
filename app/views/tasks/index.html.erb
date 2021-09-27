@@ -8,7 +8,7 @@
 </div>
 </div>
 </div>
-<% @tasks.find_each do |task| %>
+<% @tasks.each do |task| %>
 <article class="task m-2">
   <section class="task-head">
     <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags"}.join(" ") %>
