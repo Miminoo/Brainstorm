@@ -4,8 +4,9 @@ class Task < ActiveRecord::Base
   has_many :answerings, :dependent => :destroy
   has_many :answers, through: :answerings 
   belongs_to :topic
+  belongs_to :user
   has_many_attached :avatar
-  
+
   def all_tags
     self.tags.map(&:name).join(', ')
   end

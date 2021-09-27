@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
- 
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_task, only: [:show, :edit, :update]
 
   def index
@@ -15,6 +15,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
       redirect_to @task
     else
@@ -41,7 +42,7 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.find_by(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def task_params

@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_173723) do
   end
 
   create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "topic_id"
     t.string "name"
     t.text "condition"

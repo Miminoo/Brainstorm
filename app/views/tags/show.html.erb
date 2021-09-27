@@ -1,4 +1,13 @@
-<h1 class="m-2"> Tag: <%= @tag.name %> </h1>
+<div class="row mt-2">
+ <div class="col-md-4">
+<h1> Tag: <%= @tag.name %> </h1>
+</div>
+<div class="col-md-4 ms-auto">
+<div class="d-flex justify-content-end">
+    <%= link_to "Add task", new_task_path, class: 'btn btn-dark btn-lg' %>
+</div>
+</div>
+</div>
 <% @tasks.each do |task| %>
 <article class="task m-2">
   <section class="task-head">
