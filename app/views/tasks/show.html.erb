@@ -34,3 +34,29 @@
 <p>
 <%= markdown(@task.condition) %>
 </p>  
+<% if current_user && current_user.id != @task.user.id %>
+<%= form_with model: [ @task, @task.taskuseranswers.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :status %><br>
+    <%= form.text_area :status, value: false %>
+  </p>
+  <p>
+    <%= form.label :user_id %><br>
+    <%= form.text_area :user_id, value: current_user.id %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<% end %>
+ <% @task.answers.each do |answer| %>
+      <% @task.taskuseranswers.each do |uanswer| %>
+    <% if answer.name == uanswer.name && current_user.id != @task.user.id %>
+      <h1> You're right! </h1>
+    <% end %>
+    <% end %>
+  <% end %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'tasks#index'
-  resources :tasks
+  resources :tasks do
+    resources :taskuseranswers
+  end
   resources :tags, only: [:show]
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 end
