@@ -8,7 +8,7 @@ class TaskuseranswersController < ApplicationController
 
   private
    def taskuseranswer_params
-    params.require(:taskuseranswer).permit(:name, :user_id, :status)
+    params.require(:taskuseranswer).permit(:name, :status).merge(user_id: current_user.id)
    end
 
 end
