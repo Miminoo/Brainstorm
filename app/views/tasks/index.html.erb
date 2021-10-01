@@ -1,21 +1,20 @@
 <div class="row mt-2">
- <div class="col-md-4">
-<h1> Top tasks </h1>
-</div>
-<div class="col-md-4 ms-auto">
-<div class="d-flex justify-content-end">
-    <%= link_to "Add task", new_task_path, class: 'btn btn-dark btn-lg' %>
-</div>
-</div>
+  <div class="col-md-4">
+    <h1> Top tasks </h1>
+  </div>
+  <div class="col-md-4 ms-auto">
+    <div class="d-flex justify-content-end">
+      <%= link_to "Add task" , new_task_path, class: 'btn btn-dark btn-lg' %>
+    </div>
+  </div>
 </div>
 <% @tasks.each do |task| %>
-<article class="task m-2">
-  <section class="task-head">
-    <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags"}.join(" ") %>
+  <article class="task m-2">
+    <section class="task-head">
+      <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags" }.join(" ") %>
   </section>
-  <section class="task-body">
-    <%= link_to task.name+" ?", task_path(task.id), class: "task_name" %> 
-  </section>
-</article>
-<% end %>
-  
+  <section class=" task-body">
+        <%= link_to task.name+" ?", task_path(task.id), class: "task_name" %>
+    </section>
+  </article>
+  <% end %>

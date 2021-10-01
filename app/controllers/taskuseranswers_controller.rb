@@ -1,5 +1,5 @@
 class TaskuseranswersController < ApplicationController
-
+  add_flash_types :success, :danger
   def create
     @task = Task.find(params[:task_id])
     @current_user ||= User.find_by_id(params[:user_id]) || User.find_by_id(params[:id])
@@ -8,10 +8,12 @@ class TaskuseranswersController < ApplicationController
         @task.answers.each do |task|
         if task.name == @taskuseranswer.name
           @current_user.update_attribute(:complete_tasks, @current_user.complete_tasks +=1)
+          redirect_to task_path(@task), success: 'Верный ответ'
+        else
+          redirect_to task_path(@task), danger: 'Не верный ответ'
         end
       end
     end
-    redirect_to task_path(@task)
   end
 
   private

@@ -1,0 +1,18 @@
+<article class="task">
+<section class="task-head">
+<%= raw @task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags"}.join(" ") %>
+</section> 
+</article>
+<% if current_user && @task.user_id == current_user.id%>
+<div class='task_answers'> Answers: <%= raw @task.answers.map(&:name).join(" , ") %> </div>
+<% end %>
+<h2> Topic:  <%= @task.topic.name %> </h2>
+<div>
+  <% @task.avatar.each do |avatars| %>
+    <%= image_tag(avatars, height: 150, width: 250) %>
+  <% end %>
+</div>
+<h2 class="mt-2">Condition: </h2>
+<p>
+<%= markdown(@task.condition) %>
+</p>

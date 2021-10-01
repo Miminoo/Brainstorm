@@ -1,53 +1,23 @@
-<div class="row mt-2">
- <div class="col-md-4">
-<h2> <%= @task.name %> ?</h2>
-</div>
-<div class="col-md-4 ms-auto">
-<div class="d-flex justify-content-end">
-  
-  <% if current_user && @task.user_id == current_user.id %>
-  <%= link_to "Delete", task_path, data: {confirm: 'You are really?'}, class: 'btn btn-dark btn-lg',  method: :delete %>
-  <%= link_to "Change", edit_task_path, class: 'btn btn-dark btn-lg ms-2' %>
-  <% end %>
-  <%= link_to "Add task", new_task_path, class: 'btn btn-dark btn-lg ms-2' %>
-  
-</div>
-</div>
-</div>
-<article class="task">
-<section class="task-head">
-<%= raw @task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags"}.join(" ") %>
-</section> 
-</article>
-<% if current_user && @task.user_id == current_user.id%>
-<div class='task_answers'> Answers: <%= raw @task.answers.map(&:name).join(" , ") %> </div>
-<% end %>
-<h2> Topic:  <%= @task.topic.name %> </h2>
-<div>
-  <% @task.avatar.each do |avatars| %>
-    <%= image_tag(avatars, height: 150, width: 250) %>
-  <% end %>
-</div>
-<h2 class="mt-2">Condition: </h2>
-<p>
-<%= markdown(@task.condition) %>
-</p>
-<% @c=0 %>
- <% @task.answers.each do |answer| %>
-      <% @task.taskuseranswers.each do |uanswer| %>
-    <% if answer.name == uanswer.name && user_signed_in? && current_user.id == uanswer.user_id %>
-      <div style="background-color:green; text-align:center; padding: 5px; color:#fff; margin-top:50px">  <h3> Complete </h3> </div>   
-      <% @c+=1 %>
-    <% end %>
-    <% end %>
-  <% end %>
-<% if current_user && current_user.id != @task.user.id && @c<1 %>
-<%= form_with model: [ @task, @task.taskuseranswers.build ] do |form| %>
-  <p>
-    <%= form.label "Answer" %><br>
-    <%= form.text_field :name %> 
-    <%= form.submit 'add', :class => 'btn btn-primary'%>
-  </p>
-<% end %>
-<% end %>
+<%= render 'flash' %>
+  <div class="row mt-2">
+    <div class="col-md-4">
+      <h2>
+        <%= @task.name %> ?
+      </h2>
+    </div>
+    <div class="col-md-4 ms-auto">
+      <div class="d-flex justify-content-end">
 
+        <% if current_user && @task.user_id==current_user.id %>
+          <%= link_to "Delete" , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-dark btn-lg' , method:
+            :delete %>
+            <%= link_to "Change" , edit_task_path, class: 'btn btn-dark btn-lg ms-2' %>
+              <% end %>
+                <%= link_to "Add task" , new_task_path, class: 'btn btn-dark btn-lg ms-2' %>
+
+      </div>
+    </div>
+  </div>
+  <%= render 'showtask' %>
+    <%= render 'useranswer' %>
+    <%= link_to "Back", :back, class: "btn btn-outline-primary pull-xxl-right mt-2" %> 
