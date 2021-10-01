@@ -35,7 +35,7 @@
 <% @c=0 %>
  <% @task.answers.each do |answer| %>
       <% @task.taskuseranswers.each do |uanswer| %>
-    <% if answer.name == uanswer.name && current_user.id == uanswer.user_id %>
+    <% if answer.name == uanswer.name && user_signed_in? && current_user.id == uanswer.user_id %>
       <div style="background-color:green; text-align:center; padding: 5px; color:#fff; margin-top:50px">  <h3> Complete </h3> </div>   
       <% @c+=1 %>
     <% end %>
@@ -46,7 +46,7 @@
   <p>
     <%= form.label "Answer" %><br>
     <%= form.text_field :name %> 
-    <%= form.submit 'Answering', :class => 'btn btn-primary'%>
+    <%= form.submit 'add', :class => 'btn btn-primary'%>
   </p>
 <% end %>
 <% end %>
