@@ -1,5 +1,7 @@
 class TaskuseranswersController < ApplicationController
+  
   add_flash_types :success, :danger
+  
   def create
     @task = Task.find(params[:task_id])
     @current_user ||= User.find_by_id(params[:user_id]) || User.find_by_id(params[:id])

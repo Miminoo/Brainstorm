@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-end">
+<% if user_signed_in? && @task.user.id != current_user.id %>
+<%= form_with model: [@task, @task.ratings.build] do |f| %>
+  <p>
+    <div class="form-group" id="star">
+    <%= f.submit "add", disable_with: 'Submiting...', id: 'review_star', class: "btn btn-primary", data: {confirm: 'You are really?' } %>
+  </div>
+  <p>
+  <script>
+  $('#star').raty({
+    size     : 25,
+    starOff:  '<%= asset_path('star-off.png', size:"25x25") %>',
+    starOn : '<%= asset_path('star-on.png', size:"25x25") %>',
+    scoreName: 'ratings[star]',
+    half: false,
+  });
+  </script> 
+<% end %> 
+<% end %>
+</div>

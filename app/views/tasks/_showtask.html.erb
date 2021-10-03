@@ -6,8 +6,19 @@
 <% if current_user && @task.user_id == current_user.id%>
 <div class='task_answers'> Answers: <%= raw @task.answers.map(&:name).join(" , ") %> </div>
 <% end %>
-<h2> Topic:  <%= @task.topic.name %> </h2>
-<div>
+<div class="row mt-2">
+    <div class="col-md-4">
+      <h2>
+        <h2> Topic:  <%= @task.topic.name %> </h2>
+      </h2>
+    </div>
+    <div class="col-md-4 ms-auto">
+      <div class="d-flex justify-content-end">
+            <%= render "star" %>
+          </div>
+        </div>
+    </div>
+  <div>
   <% @task.avatar.each do |avatars| %>
     <%= image_tag(avatars, height: 150, width: 250) %>
   <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_212123) do
+ActiveRecord::Schema.define(version: 2021_10_02_101528) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 2021_09_29_212123) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "ratings", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.integer "user_id"
+    t.integer "star"
+    t.index ["task_id"], name: "index_ratings_on_task_id"
+  end
+
   create_table "sessions", charset: "utf8mb4", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -91,7 +98,6 @@ ActiveRecord::Schema.define(version: 2021_09_29_212123) do
   create_table "taskuseranswers", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-    t.boolean "status", default: false
     t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -124,6 +130,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_212123) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answerings", "answers"
   add_foreign_key "answerings", "tasks"
+  add_foreign_key "ratings", "tasks"
   add_foreign_key "taggings", "tags"
   add_foreign_key "taggings", "tasks"
   add_foreign_key "taskuseranswers", "tasks"

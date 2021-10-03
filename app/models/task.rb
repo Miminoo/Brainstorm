@@ -7,6 +7,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   has_many_attached :avatar
   has_many :taskuseranswers, :dependent => :destroy
+  has_many :ratings, :dependent => :destroy
   
   def all_tags
     self.tags.map(&:name).join(', ')
