@@ -1,0 +1,7 @@
+<div class="row" style="text-align: center;">
+    <div class="col-md-12">
+ <% tag_cloud(Tag.counts, %w{XS S M L XL}) do |tag, css_class| %>
+        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+      <% end %> 
+    </div>
+  </div>

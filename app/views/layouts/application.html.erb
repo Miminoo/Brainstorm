@@ -21,9 +21,6 @@
   </button>
   <a class="navbar-brand"> <%= link_to("Brainstorm", tasks_path, class: 'navbar-brand') %>/a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-   <div style="width:53%;">
-    <%= text_field_tag (:id_name) %>
-  </div>
     <div class="navbar-nav align-items-end">
       <a class="nav-item nav-link"> <%= link_to "Tasks", tasks_path, class: "nav-link" %> </a>
         <% if current_user %>
@@ -38,7 +35,13 @@
   </div>
 </nav>
 <div class="container">
+          <%
+=begin%>
+ <input type="text" style="width:100%; margin: 15px 0px; padding:5px;" placeholder="Search"> 
+<%
+=end%>
     <%= yield %>
     </div>
+    
   </body>
 </html>
