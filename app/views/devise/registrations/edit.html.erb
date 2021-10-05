@@ -64,7 +64,9 @@
   <tbody>
   <% @user.tasks.each do |user_task| %>
     <tr>
-      <th scope="row"> <%= link_to user_task.name, task_path(user_task.id) %> </th>
+      <td scope="row"> <%= link_to user_task.name, task_path(user_task.id) %>
+      <%= avg_rating(user_task.id) %>
+        <%= image_tag("star-on",size: "30x30")%> </td>
       <td> <%= user_task.topic.name %> </td>
       <td> <%= markdown(user_task.condition) %></td>
       <td> 
