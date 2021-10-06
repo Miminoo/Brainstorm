@@ -2,14 +2,15 @@
   <div class="row mt-2">
     <div class="col-md-4">
       <h2>
-        <%= @task.name %> ? 
-        <%= avg_rating(@task.id) %>
-        <%= image_tag("star-on",size: "30x30")%>
+        <%= @task.name %>
       </h2>
     </div>
     <div class="col-md-4 ms-auto">
       <div class="d-flex justify-content-end">
-
+         <div class="show_rating m-2">
+          <div class="show_avg_rating"> <%= avg_rating(@task.id) %> </div>
+          <%= image_tag("star-on",size: "30x30")%>
+        </div>
         <% if current_user && @task.user_id==current_user.id %>
           <%= link_to "Delete" , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-dark btn-lg' , method:
             :delete %>
