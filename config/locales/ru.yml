@@ -9,8 +9,11 @@ ru:
       menu_tasks: "Задачи"
       menu_profile: "Профиль"
       menu_sign_out: "Выход"
-      menu_sign_in: "Вход"
+      menu_sign_in: "Войти"
   devise:
+    sessions:
+      new:
+        title: "Вход"
     registrations:
       edit:
         username: "Имя пользователя: "

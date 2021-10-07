@@ -11,6 +11,9 @@ en:
       menu_sign_out: "Sign out"
       menu_sign_in: "Sign in"
   devise:
+    sessions:
+      new:
+        title: "Sign in"
     registrations:
       edit:
         username: "Username: "
