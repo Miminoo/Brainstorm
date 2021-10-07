@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'tasks#index'
-  resources :tasks do
-    resources :taskuseranswers
-    resources :ratings
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    root 'tasks#index'
+    resources :tasks do
+      resources :taskuseranswers
+      resources :ratings
+    end
+    resources :tags, only: [:show]
   end
-  resources :tags, only: [:show]
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 end

@@ -19,27 +19,51 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand"> <%= link_to("Brainstorm", tasks_path, class: 'navbar-brand') %>/a>
+  <a class="navbar-brand"> <%= link_to((t '.website_title'), tasks_path, class: 'navbar-brand') %>/a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
     <div class="navbar-nav align-items-end">
-      <a class="nav-item nav-link"> <%= link_to "Tasks", tasks_path, class: "nav-link" %> </a>
+
+
+
+      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+
+        <li class="dropdown">
+          <%= link_to "#", class: "nav-link px-2 dropdown-toggle text-white", data: {"bs-toggle":'dropdown'} do %>
+            <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
+            <%= I18n.locale%>
+          <% end %>
+          <ul class="dropdown-menu">
+            <% I18n.available_locales.each do |locale| %>
+            <li>
+            
+            <% if I18n.locale == locale %>
+              <%= tag.span t(locale), class: 'dropdown-item' %>
+              <%else%>
+                <%= link_to t(locale), root_path(locale: locale), class: 'dropdown-item' %>
+              <% end %>
+            </li><% end %>
+          </ul>
+        </li>
+
+      </ul>
+
+
+
+
+
+      <a class="nav-item nav-link"> <%= link_to (t '.menu_tasks'), tasks_path, class: "nav-link" %> </a>
         <% if current_user %>
-       <a class="nav-item nav-link"> <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %> </a>
+       <a class="nav-item nav-link"> <%= link_to (t '.menu_profile'), edit_user_registration_path, class: "nav-link" %> </a>
           <% end %>
       <% if !current_user %>
-      <a class="nav-item nav-link"><%= link_to "Sign in", user_session_path, class: "nav-link" %></a>
+      <a class="nav-item nav-link"><%= link_to (t '.menu_sign_in'), user_session_path, class: "nav-link" %></a>
       <% else %>
-      <a class="nav-item nav-link"><%= link_to "Sign out", destroy_user_session_path, class: "nav-link", :method => :delete %></a>
+      <a class="nav-item nav-link"><%= link_to (t '.menu_sign_out'), destroy_user_session_path, class: "nav-link", :method => :delete %></a>
       <% end %>
     </div>
   </div>
 </nav>
 <div class="container">
-          <%
-=begin%>
- <input type="text" style="width:100%; margin: 15px 0px; padding:5px;" placeholder="Search"> 
-<%
-=end%>
     <%= yield %>
     </div>
     

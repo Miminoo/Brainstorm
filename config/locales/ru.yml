@@ -1,0 +1,58 @@
+ru:
+  en: Английский
+  ru: Русский
+  danger: "Неправильное решение!"
+  success: "Правильное решение!"
+  layouts:
+    application:
+      website_title: "Мозговой штурм"
+      menu_tasks: "Задачи"
+      menu_profile: "Профиль"
+      menu_sign_out: "Выход"
+      menu_sign_in: "Вход"
+  devise:
+    registrations:
+      edit:
+        username: "Имя пользователя: "
+        completed_tasks: "Количесвто выполненных задач: "
+        created_tasks: "Количество созданных задач: "
+        email: "Почта: "
+        th_task: "Задача"
+        th_topic: "Тема"
+        th_description: "Описание"
+        th_tags: "Тег"
+        th_picture: "Изображение"
+        th_rating: "Рейтинг"
+        button_add: "Добавить"
+        button_delete: "Удалить"
+        button_change: "Изменить"
+  tasks:
+    index:
+      title: "Задачи"
+      button_add_task: "Добавить задачу"
+    edit:
+      title: "Редактирование"
+    new:
+      title: "Добавление"
+    show:
+      button_change: "Изменить"
+      button_delete: "Удалить"
+      button_add_task: "Добавить"
+      button_back: "Вернуться"
+    showtask:
+      title_answers: "Ответ(ы): "
+      title_topic: "Тема: "
+      title_description: "Описание: "
+    form:
+      name: "Название"
+      plho_name: "Введите название задачи"
+      answers: "Список ответов"
+      plho_answers: "Введите все взможные ответы на свой вопрос, наример: '1, one, один'"
+      tags: "Список тегов"
+      plho_tags: "Введите соответствующие теги к своей задаче, например: 'ruby, rails, c++, ...'"
+      topic: "Тема"
+      gallery: "Изображени(е/я)"
+      description: "Описание"
+      plho_description: "Можно использовать Markdown для форматирования"
+      button_save: "Сохранить"
+      button_back: "Вернуться"

@@ -4,12 +4,12 @@
 </section> 
 </article>
 <% if current_user && @task.user_id == current_user.id%>
-<div class='task_answers'> Answers: <%= raw @task.answers.map(&:name).join(" , ") %> </div>
+<div class='task_answers'> <%= t ".title_answers" %> <%= raw @task.answers.map(&:name).join(" , ") %> </div>
 <% end %>
 <div class="row mt-2">
     <div class="col-md-4">
       <h2>
-        <h2> Topic:  <%= @task.topic.name %> </h2>
+        <h2> <%= t ".title_topic" %>  <%= @task.topic.name %> </h2>
       </h2>
     </div>
     <div class="col-md-4 ms-auto">
@@ -23,7 +23,7 @@
     <%= image_tag(avatars, height: 150, width: 250) %>
   <% end %>
 </div>
-<h2 class="mt-2">Condition: </h2>
+<h2 class="mt-2"><%= t ".title_description" %> </h2>
 <p>
 <%= markdown(@task.condition) %>
 </p>

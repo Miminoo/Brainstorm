@@ -10,9 +10,9 @@ class TaskuseranswersController < ApplicationController
         @task.answers.each do |task|
         if task.name == @taskuseranswer.name
           @current_user.update_attribute(:complete_tasks, @current_user.complete_tasks +=1)
-          return redirect_to task_path(@task), success: 'The right decision'
+          return redirect_to task_path(@task), success: t('success')
         else
-          return redirect_to task_path(@task), danger: 'Wrong decision'
+          return redirect_to task_path(@task), danger: t('danger')
         end
       end
     end
