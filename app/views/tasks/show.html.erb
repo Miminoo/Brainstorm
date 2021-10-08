@@ -1,6 +1,6 @@
 <%= render 'flash' %>
   <div class="row mt-2">
-    <div class="col-md-4">
+    <div class="col-md-8">
       <h2>
         <%= @task.name %>
       </h2>
@@ -12,15 +12,15 @@
           <%= image_tag("star-on",size: "30x30")%>
         </div>
         <% if current_user && @task.user_id==current_user.id %>
-          <%= link_to (t ".button_delete") , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-dark btn-lg' , method:
+          <%= link_to (t ".button_delete") , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-primary btn-lg' , method:
             :delete %>
-            <%= link_to (t ".button_change") , edit_task_path, class: 'btn btn-dark btn-lg ms-2' %>
+            <%= link_to (t ".button_change") , edit_task_path, class: 'btn btn-primary btn-lg ms-2' %>
               <% end %>
-                <%= link_to (t ".button_add_task") , new_task_path, class: 'btn btn-dark btn-lg ms-2' %>
+                <%= link_to (t ".button_add_task") , new_task_path, class: 'btn btn-primary btn-lg ms-2' %>
       </div>
     </div>
   </div>
   <%= render 'showtask' %>
   
     <%= render 'useranswer' %>
-    <%= link_to (t ".button_back"), :back, class: "btn btn-outline-primary pull-xxl-right mt-2" %> 
+    <%= link_to (t ".button_back"), :back, class: "btn btn-outline-primary pull-xxl-right mt-2" %>

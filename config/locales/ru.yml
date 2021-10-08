@@ -3,6 +3,9 @@ ru:
   ru: Русский
   danger: "Неправильное решение!"
   success: "Правильное решение!"
+  search:
+    search:
+      title: "Результат поиска для: "
   layouts:
     application:
       website_title: "Мозговой штурм"

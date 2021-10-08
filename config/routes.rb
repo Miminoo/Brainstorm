@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :ratings
     end
     resources :tags, only: [:show]
+    get "search", to: "search#search"
   end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 end

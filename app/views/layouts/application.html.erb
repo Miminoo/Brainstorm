@@ -22,9 +22,6 @@
   <a class="navbar-brand"> <%= link_to((t '.website_title'), tasks_path, class: 'navbar-brand') %>/a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
     <div class="navbar-nav align-items-end">
-
-
-
       <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
 
         <li class="dropdown">
@@ -49,7 +46,6 @@
 
 
 
-
       <a class="nav-item nav-link"> <%= link_to (t '.menu_tasks'), tasks_path, class: "nav-link" %> </a>
         <% if current_user %>
        <a class="nav-item nav-link"> <%= link_to (t '.menu_profile'), edit_user_registration_path, class: "nav-link" %> </a>
@@ -59,6 +55,10 @@
       <% else %>
       <a class="nav-item nav-link"><%= link_to (t '.menu_sign_out'), destroy_user_session_path, class: "nav-link", :method => :delete %></a>
       <% end %>
+             <%= form_for :term, url: search_path ,method: :get do |form| %>
+    <%= text_field_tag :term, params[:term], class:'' %>
+    <%= submit_tag "Search", class:'btn btn-outline-primary', name: nil %>
+<% end %>
     </div>
   </div>
 </nav>

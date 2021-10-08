@@ -3,6 +3,9 @@ en:
   ru: Russian
   success: "The right decision!"
   danger: "Wrong decision!"
+  search:
+    search:
+      title: "Search Results for:"
   layouts:
     application:
       website_title: "Brainstorm"

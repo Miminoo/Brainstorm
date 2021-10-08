@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index,]
   before_action :set_task, only: [:show, :edit, :update]
   
   def index
     @tasks = Task.order("created_at DESC")
   end
-  
+
   def show
   end
 

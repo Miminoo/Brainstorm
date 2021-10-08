@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def index
     @user = User.find_by_id(current_user.id)
   end
+
   private
 
   def swich_locale(&action)
