@@ -331,7 +331,6 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  elasticsearch
   elasticsearch-model
   elasticsearch-rails
   jbuilder (~> 2.7)
