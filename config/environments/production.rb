@@ -24,6 +24,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['https://paas:91f17a37cb9ef86a6a15defefccba4ef@oin-us-east-1.searchly.com']
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
