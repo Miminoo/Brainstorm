@@ -23,8 +23,8 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  Elasticsearch::Model.client = Elasticsearch::Client.new(host: ENV['https://paas:91f17a37cb9ef86a6a15defefccba4ef@oin-us-east-1.searchly.com'], http: { port: 443, scheme: 'https' })
-  
+
+
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
