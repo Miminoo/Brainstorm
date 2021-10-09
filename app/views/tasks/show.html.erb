@@ -9,7 +9,7 @@
       <div class="d-flex justify-content-end">
          <div class="show_rating m-2">
           <div class="show_avg_rating"> <%= avg_rating(@task.id) %> </div>
-          <%= image_tag("star-on",size: "30x30")%>
+          <%= image_tag("Star/star-on.png",size: "30x30")%>
         </div>
         <% if current_user && @task.user_id==current_user.id %>
           <%= link_to (t ".button_delete") , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-primary btn-lg' , method:
