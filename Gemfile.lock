@@ -277,6 +277,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (4.6.1)
+      activemodel (>= 5)
+      elasticsearch (>= 6, < 7.14)
+      hashie
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -348,6 +352,7 @@ DEPENDENCIES
   rails_admin
   redcarpet
   sass-rails (>= 6)
+  searchkick
   selenium-webdriver
   spring
   turbolinks (~> 5)

@@ -10,6 +10,7 @@ class Task < ActiveRecord::Base
   has_many :ratings, :dependent => :destroy
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  searchkick
 
   mappings do
     indexes :name,  analyzer: 'english'
