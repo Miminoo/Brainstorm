@@ -13,6 +13,7 @@ ru:
       menu_profile: "Профиль"
       menu_sign_out: "Выход"
       menu_sign_in: "Войти"
+      menu_search_button: "Найти"
   devise:
     sessions:
       new:
@@ -20,8 +21,8 @@ ru:
     registrations:
       edit:
         username: "Имя пользователя: "
-        completed_tasks: "Количесвто выполненных задач: "
-        created_tasks: "Количество созданных задач: "
+        completed_tasks: "Выполненные задачи: "
+        created_tasks: "Созданные задачи: "
         email: "Почта: "
         th_task: "Задача"
         th_topic: "Тема"

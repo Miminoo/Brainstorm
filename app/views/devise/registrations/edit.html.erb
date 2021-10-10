@@ -1,50 +1,92 @@
-
-<h3> <%= t ".username"%> <%= @user.name %> </h3>
-<h3> <%= t ".email"%> <%= @user.email %> </h3>
-<h3><%= t ".completed_tasks" %> <%= @user.complete_tasks %></h3>
-<h3><%= t ".created_tasks" %> <%= @user.tasks.count %></h3>
-<table class="table table-bordered table-dark mt-2">
-  <thead>
+<div class="card-group mt-3 text-center">
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".username" %></h5>
+      <p class="card-text"><%= @user.name %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".email" %></h5>
+      <p class="card-text"> <%= @user.email %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".completed_tasks" %></h5>
+      <p class="card-text"> <%= @user.complete_tasks %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title">   <%= t ".created_tasks" %></h5>
+      <p class="card-text"><%= @user.tasks.count %></p>
+    </div>
+  </div>
+</div>
+<table id="example" class="display" style="width:100%">
+  <thead class="text-center">
     <tr>
-      <th scope="col"><%= t ".th_task" %></th>
-      <th scope="col"><%= t ".th_topic" %></th>
-      <th scope="col"><%= t ".th_description" %></th>
-      <th scope="col"><%= t ".th_tags" %></th>
-      <th scope="col"><%= t ".th_picture" %></th>
-       <th scope="col"><%= t ".th_rating" %></th>
-      <th scope="col"><%= link_to (t ".button_add"), new_task_path, class: 'btn btn-light btn-lg d-flex justify-content-center' %></th>
+      <th scope="col">
+        <%= t ".th_task" %>
+      </th>
+      <th scope="col">
+        <%= t ".th_topic" %>
+      </th>
+      <th scope="col">
+        <%= t ".th_description" %>
+      </th>
+      <th scope="col">
+        <%= t ".th_tags" %>
+      </th>
+      <th scope="col">
+        <%= t ".th_picture" %>
+      </th>
+      <th scope="col">
+        <%= t ".th_rating" %>
+      </th>
+      <th scope="col" data-orderable="false">
+        <%= link_to (t ".button_add" ), new_task_path, class: 'btn btn-primary btn-lg d-flex justify-content-center' %>
+      </th>
     </tr>
   </thead>
   <tbody>
-  <% @user.tasks.each do |user_task| %>
-    <tr>
-      <td scope="row"> <%= link_to user_task.name, task_path(user_task.id) %> </td>
-      <td> <%= user_task.topic.name %> </td>
-      <td> <%= markdown(user_task.condition) %></td>
-      <td> 
-      <% user_task.tags.each do |tag| %>
-      <%= tag.name %>
-      <% end %> 
-      </td>
-      <td>
-        <% user_task.avatar.each do |avatars| %>
-          <%= image_tag(avatars, height: 100, width: 150) %>
-        <% end %>
-      </td>
-      <td> <div class="show_avg_rating"><%= avg_rating(user_task.id) %></div>
-        <%= image_tag("Star/star-on.png",size: "30x30")%> 
-      </td>
-      <td>
-      <div class="d-flex justify-content-end">
-        <%= link_to (t ".button_delete"), task_path(user_task.id), data: {confirm: 'You are really?'}, class: 'btn btn-light btn-lg', method: :delete %>
-        <%= link_to (t ".button_change"), edit_task_path(user_task.id), class: 'btn btn-light btn-lg ms-2' %>
-        </div>
-      </td>
-    </tr>
-    <% end %>
+    <% @user.tasks.each do |user_task| %>
+      <tr>
+        <td>
+          <%= link_to user_task.name, task_path(user_task.id) %>
+        </td>
+        <td>
+          <%= user_task.topic.name %>
+        </td>
+        <td>
+          <%= markdown(user_task.condition) %>
+        </td>
+        <td>
+          <% user_task.tags.each do |tag| %>
+            <%= tag.name %>
+              <% end %>
+        </td>
+        <td>
+          <% user_task.avatar.each do |avatars| %>
+            <%= image_tag(avatars, height: 100, width: 150) %>
+              <% end %>
+        </td>
+        <td>
+          <div class="profile_avg_rating">
+            <%= avg_rating(user_task.id) %>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex justify-content-end">
+            <%= link_to (t ".button_delete" ), task_path(user_task.id), data: {confirm: 'You are really?' },
+              class: 'btn btn-primary btn-lg' , method: :delete %>
+              <%= link_to (t ".button_change" ), edit_task_path(user_task.id), class: 'btn btn-primary btn-lg ms-2' %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
   </tbody>
 </table>
 
-<%= link_to "Back", :back, class: "btn btn-dark btn-lg" %> 
-
-
+<%= link_to "Back" , :back, class: "btn btn-primary btn-lg mb-3" %>

@@ -9,6 +9,7 @@ en:
   layouts:
     application:
       website_title: "Brainstorm"
+      menu_search_button: "Search"
       menu_tasks: "Tasks"
       menu_profile: "Profile"
       menu_sign_out: "Sign out"
@@ -20,8 +21,8 @@ en:
     registrations:
       edit:
         username: "Username: "
-        completed_tasks: "Number of completed tasks: "
-        created_tasks: "Number of created tasks: "
+        completed_tasks: "Сompleted tasks: "
+        created_tasks: "Сreated tasks: "
         email: "Email: "
         th_task: "Task"
         th_topic: "Topic"

@@ -1,4 +1,6 @@
 <%= render 'tagcloud' %>
+<div class="card mt-3">
+    <div class="card-body">
   <div class="row mt-2">
     <div class="col-md-4">
       <h1> <%= t '.title' %> </h1>
@@ -15,6 +17,7 @@
           <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags" }.join(" ") %>
       </section>
   <section class=" task-body">
+  <div class="cart-title">
           <div class="row mt-2">
             <div class="col-md-11">
               <%= link_to task.name+" ?", task_path(task.id), class: "task_name" %>
@@ -26,6 +29,9 @@
               </div>
             </div>
           </div>
+          </div>
       </section>
     </article>
     <% end %>
+     </div>
+</div>
