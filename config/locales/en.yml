@@ -33,6 +33,10 @@ en:
         button_add: "Add"
         button_delete: "Delete"
         button_change: "Change"
+  tags:
+    show:
+      title: "Tag"
+      button_add: "Add task"
   tasks:
     index:
       title: "Top tasks"

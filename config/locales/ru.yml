@@ -14,6 +14,10 @@ ru:
       menu_sign_out: "Выход"
       menu_sign_in: "Войти"
       menu_search_button: "Найти"
+  tags:
+    show:
+      title: "Тег"
+      button_add: "Добавить задачу"
   devise:
     sessions:
       new:
