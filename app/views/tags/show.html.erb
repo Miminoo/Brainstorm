@@ -5,11 +5,13 @@
 </div>
 <div class="col-md-4 ms-auto">
 <div class="d-flex justify-content-end">
-    <%= link_to <% t ".button_add" %>, new_task_path, class: 'btn btn-primary btn-lg' %>
+    <%= link_to (t ".button_add"), new_task_path, class: 'btn btn-primary btn-lg' %>
 </div>
 </div>
 </div>
 <% @tasks.each do |task| %>
+ <div class="card mt-3">
+    <div class="card-body">
 <article class="task m-2">
   <section class="task-head">
     <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "task_tags"}.join(" ") %>
@@ -18,4 +20,6 @@
     <%= link_to task.name, task_path(task.id), class: "task_name" %>
   </section>
 </article>
+</div>
+</div>
 <% end %>
