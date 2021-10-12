@@ -3,11 +3,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update]
   
   def index
-    @tasks = Task.order("created_at DESC")
     @q = Task.ransack(params[:q])
-    if @q
-      @tasks = @q.result(distinct: false)
-    end
+    @tasks = @q.result(distinct: false)
   end
 
   def show
