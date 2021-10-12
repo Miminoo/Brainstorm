@@ -1,25 +1,25 @@
 <%= render 'flash' %>
   <div class="row mt-2">
-    <div class="col-md-8">
+    <div class="col-md-11">
       <h2>
         <%= @task.name %>
       </h2>
     </div>
-    <div class="col-md-4 ms-auto">
-      <div class="d-flex justify-content-end">
-         <div class="show_rating m-2">
+    <div class="col-md-1 d-flex justify-content-end mb-2">
+           <div class="show_rating">
           <div class="show_avg_rating"> <%= avg_rating(@task.id) %> </div>
           <%= image_tag("Star/star-on.png",size: "30x30")%>
         </div>
+        </div>
+          </div>
+        <div class="btn-toolbar text-center d-block mx-auto">
+        <%= link_to (t ".button_add_task") , new_task_path, class: 'btn btn-primary mt-1 btn-block' %>
         <% if current_user && @task.user_id==current_user.id %>
-          <%= link_to (t ".button_delete") , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-primary btn-lg' , method:
+            <%= link_to (t ".button_change") , edit_task_path, class: 'btn btn-primary mt-1 btn-block' %>
+             <%= link_to (t ".button_delete") , task_path, data: {confirm: 'You are really?' }, class: 'btn btn-primary mt-1 btn-block' , method:
             :delete %>
-            <%= link_to (t ".button_change") , edit_task_path, class: 'btn btn-primary btn-lg ms-2' %>
               <% end %>
-                <%= link_to (t ".button_add_task") , new_task_path, class: 'btn btn-primary btn-lg ms-2' %>
-      </div>
-    </div>
-  </div>
+                </div>
   <%= render 'showtask' %>
   
     <%= render 'useranswer' %>

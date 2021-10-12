@@ -16,8 +16,10 @@ module TaskHelper
     end
     if @rating.size != 0
       @avg = @sum / @rating.size
+      
       return @avg.round
     else return 0
     end
   end
+
 end

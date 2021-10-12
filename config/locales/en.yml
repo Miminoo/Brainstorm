@@ -36,15 +36,15 @@ en:
   tags:
     show:
       title: "Tag"
-      button_add: "Add task"
+      button_add: "Add"
   tasks:
     index:
       title: "Top tasks"
-      button_add_task: "Add task"
+      button_add_task: "Add"
     edit:
       title: "Edit task"
     new:
-      title: "Add task"
+      title: "Add"
     show:
       button_change: "Change"
       button_delete: "Delete"

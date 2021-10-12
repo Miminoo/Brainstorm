@@ -1,12 +1,29 @@
 <%= render 'tagcloud' %>
-
   <div class="row mt-2">
     <div class="col-md-4">
       <h1> <%= t '.title' %> </h1>
     </div>
     <div class="col-md-4 ms-auto">
       <div class="d-flex justify-content-end">
-        <%= link_to ( t '.button_add_task') , new_task_path, class: 'btn btn-primary btn-lg' %>
+        <%= link_to ( t '.button_add_task') , new_task_path, class: 'btn btn-primary me-1' %>
+        <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Сортировка
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">
+    <%= sort_link(@q, :created_at) do %>
+      <strong>По дате</strong>
+      <% end %>
+    </a></li>
+    <li><a class="dropdown-item" href="#">
+    <%= sort_link(@q, :avgrait) do %>
+     <strong>По рейтингу</strong>
+      <% end %>
+      </a>
+      </li>
+  </ul>
+</div>
       </div>
     </div>
   </div>
@@ -21,7 +38,7 @@
   <div class="cart-title">
           <div class="row mt-2">
             <div class="col-md-11">
-              <%= link_to task.name+" ?", task_path(task.id), class: "task_name" %>
+              <%= link_to task.name, task_path(task.id), class: "task_name" %>
             </div>
             <div class="col-md-1 ms-auto">
               <div class="d-flex justify-content-end">

@@ -1,162 +1,139 @@
-<div class="card-group mt-3 text-center">
-  <div class="card border-dark">
-    <div class="card-body">
-      <h5 class="card-title"><%= t ".username" %></h5>
-      <p class="card-text"><%= @user.name %></p>
-    </div>
-  </div>
-  <div class="card border-dark">
-    <div class="card-body">
-      <h5 class="card-title"><%= t ".email" %></h5>
-      <p class="card-text"> <%= @user.email %></p>
-    </div>
-  </div>
-  <div class="card border-dark">
-    <div class="card-body">
-      <h5 class="card-title"><%= t ".completed_tasks" %></h5>
-      <p class="card-text"> <%= @user.complete_tasks %></p>
-    </div>
-  </div>
-  <div class="card border-dark">
-    <div class="card-body">
-      <h5 class="card-title">   <%= t ".created_tasks" %></h5>
-      <p class="card-text"><%= @user.tasks.count %></p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+<%= render 'userdata' %>
+  <div class="row">
+    <div class="col-md-12">
       <div class="table-responsive">
         <div class="table">
-<table id="example" class="display table-bordered mt-3">
-  <thead class="text-center">
-    <tr>
-      <th scope="col">
-        <%= t ".th_task" %>
-      </th>
-      <th scope="col">
-        <%= t ".th_topic" %>
-      </th>
-      <th scope="col">
-        <%= t ".th_description" %>
-      </th>
-      <th scope="col">
-        <%= t ".th_tags" %>
-      </th>
-      <th scope="col">
-        <%= t ".th_picture" %>
-      </th>
-      <th scope="col">
-        <%= t ".th_rating" %>
-      </th>
-      <th scope="col" data-orderable="false">
-        <%= link_to (t ".button_add" ), new_task_path, class: 'btn btn-primary btn-lg d-flex justify-content-center' %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.tasks.each do |user_task| %>
-      <tr>
-        <td>
-          <%= link_to user_task.name, task_path(user_task.id) %>
-        </td>
-        <td>
-          <%= user_task.topic.name %>
-        </td>
-        <td>
-          <%= markdown(user_task.condition) %>
-        </td>
-        <td>
-          <% user_task.tags.each do |tag| %>
-            <%= tag.name %>
-              <% end %>
-        </td>
-        <td>
-          <% user_task.avatar.each do |avatars| %>
-            <%= image_tag(avatars, height: 100, width: 150) %>
-              <% end %>
-        </td>
-        <td>
-          <div class="profile_avg_rating">
-            <%= avg_rating(user_task.id) %>
-          </div>
-        </td>
-        <td>
-          <div class="d-flex justify-content-end">
-            <%= link_to (t ".button_delete" ), task_path(user_task.id), data: {confirm: 'You are really?' },
-              class: 'btn btn-primary btn-lg' , method: :delete %>
-              <%= link_to (t ".button_change" ), edit_task_path(user_task.id), class: 'btn btn-primary btn-lg ms-2' %>
-          </div>
-        </td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
+          <table id="example" class="display table-bordered mt-3">
+            <thead class="text-center">
+              <tr>
+                <th scope="col">
+                  <%= t ".th_task" %>
+                </th>
+                <th scope="col">
+                  <%= t ".th_topic" %>
+                </th>
+                <th scope="col">
+                  <%= t ".th_description" %>
+                </th>
+                <th scope="col">
+                  <%= t ".th_tags" %>
+                </th>
+                <th scope="col">
+                  <%= t ".th_picture" %>
+                </th>
+                <th scope="col">
+                  <%= t ".th_rating" %>
+                </th>
+                <th scope="col" data-orderable="false">
+                  <%= link_to (t ".button_add" ), new_task_path,
+                    class: 'btn btn-primary btn-lg d-flex justify-content-center' %>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.tasks.each do |user_task| %>
+                <tr>
+                  <td>
+                    <%= link_to user_task.name, task_path(user_task.id) %>
+                  </td>
+                  <td>
+                    <%= user_task.topic.name %>
+                  </td>
+                  <td>
+                    <%= markdown(user_task.condition) %>
+                  </td>
+                  <td>
+                    <% user_task.tags.each do |tag| %>
+                      <%= tag.name %>
+                        <% end %>
+                  </td>
+                  <td>
+                    <% user_task.avatar.each do |avatars| %>
+                      <%= image_tag(avatars, height: 100, width: 150) %>
+                        <% end %>
+                  </td>
+                  <td>
+                    <div class="profile_avg_rating">
+                      <%= avg_rating(user_task.id) %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <%= link_to (t ".button_delete" ), task_path(user_task.id), data: {confirm: 'You are really?' },
+                        class: 'btn btn-primary btn-lg' , method: :delete %>
+                        <%= link_to (t ".button_change" ), edit_task_path(user_task.id),
+                          class: 'btn btn-primary btn-lg ms-2' %>
+                    </div>
+                  </td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-<%= link_to "Back" , :back, class: "btn btn-primary btn-lg mb-3" %>
-<script>
-  $(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#example thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#example thead');
-  
-    var table = $('#example').DataTable({
-      "sDom":"ltipr",
-        paging: false,
-        orderCellsTop: true,
-        fixedHeader: false,
-        initComplete: function () {
-            var api = this.api();
-  
-            // For each column
-            api
+    <%= link_to "Back" , :back, class: "btn btn-primary btn-lg mb-3 mt-1" %>
+      <script>
+        $(document).ready(function () {
+          // Setup - add a text input to each footer cell
+          $('#example thead tr')
+            .clone(true)
+            .addClass('filters')
+            .appendTo('#example thead');
+
+          var table = $('#example').DataTable({
+            "sDom": "ltipr",
+            paging: false,
+            orderCellsTop: true,
+            fixedHeader: false,
+            initComplete: function () {
+              var api = this.api();
+
+              // For each column
+              api
                 .columns()
                 .eq(0)
                 .each(function (colIdx) {
-                    // Set the header cell to contain the input element
-                    var cell = $('.filters th').eq(
-                        $(api.column(colIdx).header()).index()
-                    );
-                    var title = $(cell).text();
-                    $(cell).html('<input type="text"/>');
-  
-                    // On every keypress in this input
-                    $(
-                        'input',
-                        $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
-                        .off('keyup change')
-                        .on('keyup change', function (e) {
-                            e.stopPropagation();
-  
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
-  
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
-  
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
+                  // Set the header cell to contain the input element
+                  var cell = $('.filters th').eq(
+                    $(api.column(colIdx).header()).index()
+                  );
+                  var title = $(cell).text();
+                  $(cell).html('<input type="text"/>');
+
+                  // On every keypress in this input
+                  $(
+                    'input',
+                    $('.filters th').eq($(api.column(colIdx).header()).index())
+                  )
+                    .off('keyup change')
+                    .on('keyup change', function (e) {
+                      e.stopPropagation();
+
+                      // Get the search value
+                      $(this).attr('title', $(this).val());
+                      var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                      var cursorPosition = this.selectionStart;
+                      // Search the column for that value
+                      api
+                        .column(colIdx)
+                        .search(
+                          this.value != ''
+                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                            : '',
+                          this.value != '',
+                          this.value == ''
+                        )
+                        .draw();
+
+                      $(this)
+                        .focus()[0]
+                        .setSelectionRange(cursorPosition, cursorPosition);
+                    });
                 });
-        },
-    });
-  });  
-</script>
+            },
+          });
+        });
+      </script>

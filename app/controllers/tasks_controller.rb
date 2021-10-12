@@ -4,6 +4,10 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task.order("created_at DESC")
+    @q = Task.ransack(params[:q])
+    if @q
+      @tasks = @q.result(distinct: false)
+    end
   end
 
   def show

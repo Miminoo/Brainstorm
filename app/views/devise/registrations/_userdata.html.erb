@@ -1,0 +1,26 @@
+<div class="card-group mt-3 text-center">
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".username" %></h5>
+      <p class="card-text"><%= @user.name %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".email" %></h5>
+      <p class="card-text"> <%= @user.email %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title"><%= t ".completed_tasks" %></h5>
+      <p class="card-text"> <%= @user.complete_tasks %></p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-body">
+      <h5 class="card-title">   <%= t ".created_tasks" %></h5>
+      <p class="card-text"><%= @user.tasks.count %></p>
+    </div>
+  </div>
+</div>

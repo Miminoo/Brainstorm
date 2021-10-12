@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ .example{
+   width: 100%;
+ }
+ table {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
  thead input {
   width: 100%;
 }
