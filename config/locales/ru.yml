@@ -24,10 +24,6 @@ ru:
         title: "Вход"
     registrations:
       edit:
-        username: "Имя пользователя: "
-        completed_tasks: "Выполненные задачи: "
-        created_tasks: "Созданные задачи: "
-        email: "Почта: "
         th_task: "Задача"
         th_topic: "Тема"
         th_description: "Описание"
@@ -37,8 +33,17 @@ ru:
         button_add: "Добавить"
         button_delete: "Удалить"
         button_change: "Изменить"
+        button_back: "Вернуться"
+      userdata:
+        username: "Имя пользователя: "
+        completed_tasks: "Выполненные задачи: "
+        created_tasks: "Созданные задачи: "
+        email: "Почта: "
   tasks:
     index:
+      sort: "Сортировка"
+      sort_date: "По дате"
+      sort_rating: "По рэйтингу"
       title: "Задачи"
       button_add_task: "Добавить"
     edit:

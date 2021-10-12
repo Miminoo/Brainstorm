@@ -20,10 +20,6 @@ en:
         title: "Sign in"
     registrations:
       edit:
-        username: "Username: "
-        completed_tasks: "Сompleted tasks: "
-        created_tasks: "Сreated tasks: "
-        email: "Email: "
         th_task: "Task"
         th_topic: "Topic"
         th_description: "Description"
@@ -33,12 +29,21 @@ en:
         button_add: "Add"
         button_delete: "Delete"
         button_change: "Change"
+        button_back: "Back"
+    userdata:
+        username: "Username: "
+        completed_tasks: "Сompleted tasks: "
+        created_tasks: "Сreated tasks: "
+        email: "Email: "
   tags:
     show:
       title: "Tag"
       button_add: "Add"
   tasks:
     index:
+      sort: "Sort"
+      sort_date: "By date"
+      sort_rating: "By rating"
       title: "Top tasks"
       button_add_task: "Add"
     edit:

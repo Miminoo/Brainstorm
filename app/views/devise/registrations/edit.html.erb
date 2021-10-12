@@ -26,7 +26,7 @@
                 </th>
                 <th scope="col" data-orderable="false">
                   <%= link_to (t ".button_add" ), new_task_path,
-                    class: 'btn btn-primary btn-lg d-flex justify-content-center' %>
+                    class: 'btn btn-primary d-flex justify-content-center' %>
                 </th>
               </tr>
             </thead>
@@ -58,11 +58,11 @@
                     </div>
                   </td>
                   <td>
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex d-flex justify-content-center">
                       <%= link_to (t ".button_delete" ), task_path(user_task.id), data: {confirm: 'You are really?' },
-                        class: 'btn btn-primary btn-lg' , method: :delete %>
+                        class: 'btn btn-primary' , method: :delete %>
                         <%= link_to (t ".button_change" ), edit_task_path(user_task.id),
-                          class: 'btn btn-primary btn-lg ms-2' %>
+                          class: 'btn btn-primary ms-2' %>
                     </div>
                   </td>
                 </tr>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <%= link_to "Back" , :back, class: "btn btn-primary btn-lg mb-3 mt-1" %>
+    <%= link_to (t ".button_back") , :back, class: "btn btn-outline-primary mb-3 mt-1" %>
       <script>
         $(document).ready(function () {
           // Setup - add a text input to each footer cell

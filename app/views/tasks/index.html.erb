@@ -8,17 +8,17 @@
         <%= link_to ( t '.button_add_task') , new_task_path, class: 'btn btn-primary me-1' %>
         <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Сортировка
+    <%= t ".sort" %>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#">
     <%= sort_link(@q, :created_at) do %>
-      <strong>По дате</strong>
+      <strong><%= t ".sort_date" %></strong>
       <% end %>
     </a></li>
     <li><a class="dropdown-item" href="#">
     <%= sort_link(@q, :avgrait) do %>
-     <strong>По рейтингу</strong>
+     <strong><%= t ".sort_rating" %></strong>
       <% end %>
       </a>
       </li>
