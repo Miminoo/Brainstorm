@@ -11,17 +11,20 @@
     <%= t ".sort" %>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">
-    <%= sort_link(@q, :created_at) do %>
-      <strong><%= t ".sort_date" %></strong>
-      <% end %>
-    </a></li>
-    <li><a class="dropdown-item" href="#">
-    <%= sort_link(@q, :avgrait) do %>
-     <strong><%= t ".sort_rating" %></strong>
-      <% end %>
+    <li>
+    <a class="dropdown-item" href="#">
+        <%= sort_link(@q, :created_at) do %>
+            <strong><%= t ".sort_date" %></strong>
+        <% end %>
+    </a>
+    </li>
+    <li>
+    <a class="dropdown-item" href="#">
+        <%= sort_link(@q, :avgrait) do %>
+            <strong><%= t ".sort_rating" %></strong>
+        <% end %>
       </a>
-      </li>
+    </li>
   </ul>
 </div>
       </div>

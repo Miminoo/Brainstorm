@@ -16,7 +16,7 @@ module TaskHelper
     end
     if @rating.size != 0
       @avg = @sum / @rating.size
-      
+      Task.find(id = task_id).update(avgrait: @avg)
       return @avg.round
     else return 0
     end
