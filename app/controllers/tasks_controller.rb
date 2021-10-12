@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = Task.order("created_at DESC")
     @q = Task.ransack(params[:q])
     if @q
-      @tasks = @q.result(distinct: false)
+      @tasks = @q.result(distinct: true)
     end
   end
 
