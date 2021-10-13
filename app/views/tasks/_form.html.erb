@@ -1,4 +1,4 @@
-<%= form_for @task do |f| %>
+<%= form_for @task, tags: @tags do |f| %>
   <div class = "form-group">
     <%= f.label (t ".name"), class: "label" %>
     <%= f.text_field :name, class: "form-control", placeholder: (t ".plho_name") %>
@@ -9,8 +9,9 @@
   </div>
   <div class = "form-group">
     <%= f.label (t ".tags"), class: "label" %>
-    <%= f.text_field :all_tags, class: "form-control", placeholder: (t ".plho_tags") %>
+    <%= f.collection_select :tag_ids, @tags, :id, :name, {}, multiple: true, class: 'js-multiple-select w-100' %>
   </div>
+
 
   <div class = "form-group">
     <%= f.label (t ".topic"), class: "label" %>

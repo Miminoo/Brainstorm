@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index,]
   before_action :set_task, only: [:show, :edit, :update]
+  before_action :fetch_tags, only: %i[new edit]
   
   def index
     @tasks = Task.order("created_at DESC")
@@ -50,6 +51,11 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :topic_name,:condition, :all_answers, :all_tags, :topic_id, :avatar => [])
+    params.require(:task).permit(:name, :topic_name,:condition, :all_answers, :all_tags, :topic_id, :avatar => [], :tag_ids => [])
   end
+
+  def fetch_tags
+    @tags = Tag.all
+  end
+
 end
