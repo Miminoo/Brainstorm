@@ -8,6 +8,7 @@ class Task < ActiveRecord::Base
   has_many_attached :avatar
   has_many :taskuseranswers, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   searchkick
@@ -38,18 +39,8 @@ class Task < ActiveRecord::Base
     )
   end
 
-  def all_tags
-    self.tags.map(&:name).join(', ')
-  end
-
-  def all_tags=(names)
-    self.tags = names.split(',').map do |name|
-      Tag.where(name: name.strip).first_or_create!
-    end
-  end
-
   def all_answers
-    self.answers.map(&:name).join(', ')
+    self.answers.map(&:name).join(',')
   end
 
   def all_answers=(names)

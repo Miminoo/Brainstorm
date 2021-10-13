@@ -51,7 +51,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :topic_name,:condition, :all_answers, :all_tags, :topic_id, :avatar => [], :tag_ids => [])
+    params.require(:task).permit(:name, :topic_name,:condition, :all_answers, :topic_id, :avatar => [], :tag_ids => [])
   end
 
   def fetch_tags
