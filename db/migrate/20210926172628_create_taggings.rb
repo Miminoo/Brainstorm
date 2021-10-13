@@ -6,5 +6,8 @@ class CreateTaggings < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+    add_index :taggings, [:task_id, :tag_id], unique: true
+    #Ex:- add_index("admin_users", "username")
   end
 end
