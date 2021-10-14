@@ -40,6 +40,8 @@ ru:
         created_tasks: "Созданные задачи: "
         email: "Почта: "
   tasks:
+    star:
+      star_add: "Оценить"
     index:
       sort: "Сортировка"
       sort_date: "По дате"

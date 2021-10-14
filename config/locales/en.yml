@@ -40,6 +40,8 @@ en:
       title: "Tag"
       button_add: "Add"
   tasks:
+    star:
+      star_add: "Estimate"
     index:
       sort: "Sort"
       sort_date: "By date"

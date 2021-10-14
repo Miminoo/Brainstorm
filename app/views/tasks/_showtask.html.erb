@@ -7,16 +7,11 @@
 <div class='task_answers'> <%= t ".title_answers" %> <%= raw @task.answers.map(&:name).join(" , ") %> </div>
 <% end %>
 <div class="row mt-2">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <h2>
         <h2> <%= t ".title_topic" %>  <%= @task.topic.name %> </h2>
       </h2>
     </div>
-    <div class="col-md-4 ms-auto">
-      <div class="d-flex justify-content-end">
-            <%= render "star" %>
-          </div>
-        </div>
     </div>
   <div>
   <% @task.avatar.each do |avatars| %>

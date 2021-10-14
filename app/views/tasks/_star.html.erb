@@ -1,9 +1,9 @@
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-center">
 <% if user_signed_in? && @task.user.id != current_user.id %>
 <%= form_with model: [@task, @task.ratings.build] do |f| %>
   <p>
-    <div class="form-group" id="star">
-    <%= f.submit "add", disable_with: 'Submiting...', id: 'review_star', class: "btn btn-primary", data: {confirm: 'You are really?' } %>
+    <div class="form-group " id="star">
+    <%= f.submit (t ".star_add"), class: "btn btn-primary" %> 
   </div>
   <p>
   <script>
@@ -15,7 +15,7 @@
     scoreName: 'ratings[star]',
     half: false,
   });
- };
+ }
  $(document).ready(ready);
   $(document).on('page:load', ready);
   </script> 
