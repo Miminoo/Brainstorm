@@ -7,13 +7,17 @@
   </div>
   <p>
   <script>
-  $('#star').raty({
+  var ready;
+ ready = function(){$('#star').raty({
     size     : 25,
     starOff:  '<%= asset_path('star-off.png', size:"25x25") %>',
     starOn : '<%= asset_path('star-on.png', size:"25x25") %>',
     scoreName: 'ratings[star]',
     half: false,
   });
+ };
+ $(document).ready(ready);
+  $(document).on('page:load', ready);
   </script> 
 <% end %> 
 <% end %>
